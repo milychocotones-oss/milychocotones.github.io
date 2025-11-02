@@ -57,13 +57,26 @@
         .drip4 { left: 70%; animation-delay: 1.5s; width: 55px; }
         .drip5 { left: 90%; animation-delay: 0.8s; }
 
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-image {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
         h1 {
             color: #f4e4c1;
             font-size: 3.5rem;
             margin-bottom: 0.5rem;
             text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-            position: relative;
-            z-index: 1;
         }
 
         .tagline {
@@ -321,8 +334,13 @@
             <div class="chocolate-drip drip4"></div>
             <div class="chocolate-drip drip5"></div>
         </div>
-        <h1>🍫 Mily Chocotones</h1>
-        <p class="tagline">Chocotones Artesanais com Amor</p>
+        <div class="header-content">
+            <img src="https://raw.githubusercontent.com/milychocotones-oss/chocotones-imagens/main/Chocotone%20em%202D.png" alt="Mily Chocotones" class="logo-image">
+            <div>
+                <h1>Mily Chocotones</h1>
+                <p class="tagline">Chocotones Artesanais com Amor</p>
+            </div>
+        </div>
     </header>
 
     <nav>
@@ -350,7 +368,7 @@
                 <div class="product-card">
                     <img src="https://raw.githubusercontent.com/milychocotones-oss/chocotones-imagens/main/Chocotone%20trufado.jpeg" alt="Chocotone Trufado" class="product-image">
                     <h3>Chocotone Trufado</h3>
-                    <p>Recheado com brigadeiro feito com chocolate 50% e com cobertura blend, contém 140g. Uma experiência gourmet inesquecível. Valor R$ 8,00.</p>
+                    <p>Recheado com chocolate belga premium e cobertura de ganache. Uma experiência gourmet inesquecível.</p>
                 </div>
 
                 <div class="product-card">
@@ -362,7 +380,7 @@
                 <div class="product-card">
                     <img src="https://raw.githubusercontent.com/milychocotones-oss/chocotones-imagens/main/Panetone%20grande%20trufado%20com%20moldura.jpeg" alt="Chocotone Tamanho Especial Trufado" class="product-image">
                     <h3>Chocotone Tamanho Especial Trufado</h3>
-                    <p>Recheado com brigadeiro feito com chocolate 50% e com cobertura blend, contém 400g. Valor R$ 22,00.</p>
+                    <p>Com 400 gramas, nosso chocotone trufado especial com recheio de chocolate belga premium. Valor R$ 20,00.</p>
                 </div>
 
                 <div class="product-card">
