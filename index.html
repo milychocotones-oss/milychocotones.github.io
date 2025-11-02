@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mily Chocotones - Chocotones Artesanais</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            color: #2c1810;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(180deg, #3d2817 0%, #5c3d2e 100%);
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .drip-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .chocolate-drip {
+            position: absolute;
+            width: 60px;
+            height: 0;
+            background: linear-gradient(180deg, #3d2817 0%, #6f4e37 100%);
+            border-radius: 0 0 30px 30px;
+            animation: drip 3s ease-in infinite;
+        }
+
+        @keyframes drip {
+            0% { height: 0; opacity: 0; }
+            30% { opacity: 1; }
+            100% { height: 120px; opacity: 0; }
+        }
+
+        .drip1 { left: 10%; animation-delay: 0s; }
+        .drip2 { left: 30%; animation-delay: 0.5s; width: 50px; }
+        .drip3 { left: 50%; animation-delay: 1s; }
+        .drip4 { left: 70%; animation-delay: 1.5s; width: 55px; }
+        .drip5 { left: 90%; animation-delay: 0.8s; }
+
+        h1 {
+            color: #f4e4c1;
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .tagline {
+            color: #d4a574;
+            font-size: 1.3rem;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            background: #5c3d2e;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        nav a {
+            color: #f4e4c1;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #FFD700;
+        }
+
+        .drops-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .drop {
+            position: absolute;
+            width: 20px;
+            height: 25px;
+            background: radial-gradient(circle at 30% 30%, #8B4513, #3d2817);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(45deg);
+            opacity: 0.3;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(45deg);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(244,228,193,0.95) 100%);
+            border-radius: 20px;
+            padding: 4rem;
+            margin: 3rem 0;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🍫';
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.1;
+            top: -3rem;
+            right: -2rem;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            color: #3d2817;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #5c3d2e;
+            line-height: 1.8;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .product-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+        }
+
+        .product-image {
+            width: 100%;
+            max-width: 250px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .product-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-card h3 {
+            color: #3d2817;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-card p {
+            color: #5c3d2e;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 100%);
+            color: #f4e4c1;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 2rem 0;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+        }
+
+        footer {
+            background: #3d2817;
+            color: #f4e4c1;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        .contact-info h2 {
+            color: #3d2817;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .contact-info p {
+            color: #5c3d2e;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+
+        /* Modal para o QR Code */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 10px;
+        }
+
+        .close-button {
+            background: #8B4513;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="drops-background" id="dropsContainer"></div>
+    
+    <!-- Modal para o QR Code -->
+    <div id="qrModal" class="modal">
+        <div class="modal-content">
+            <img src="https://raw.githubusercontent.com/milychocotones-oss/chocotones-imagens/main/QR%20Code%20do%20WhatsApp.jpeg" alt="QR Code para WhatsApp" class="modal-image">
+            <p>Escaneie o QR Code para fazer seu pedido via WhatsApp!</p>
+            <button class="close-button" id="closeModal">Fechar</button>
+        </div>
+    </div>
+    
+    <header>
+        <div class="drip-container">
+            <div class="chocolate-drip drip1"></div>
+            <div class="chocolate-drip drip2"></div>
+            <div class="chocolate-drip drip3"></div>
+            <div class="chocolate-drip drip4"></div>
+            <div class="chocolate-drip drip5"></div>
+        </div>
+        <h1>🍫 Mily Chocotones</h1>
+        <p class="tagline">Chocotones Artesanais com Amor</p>
+    </header>
+
+    <nav>
+        <a href="#home">Início</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+    </nav>
+
+    <div class="container">
+        <section id="home" class="hero">
+            <h2>Sabor que Derrete na Boca</h2>
+            <p>Nossos chocotones são feitos artesanalmente, com ingredientes selecionados e muito chocolate de qualidade. Cada mordida é uma experiência única que celebra a tradição e o sabor irresistível do verdadeiro chocotone.</p>
+            <button class="cta-button" id="pedidoButton">Faça seu Pedido</button>
+        </section>
+
+        <section id="produtos">
+            <div class="products">
+                <div class="product-card">
+                    <img src="https://raw.githubusercontent.com/milychocotones-oss/chocotones-imagens/main/Chocotone%20Tradicional.jpeg" alt="Chocotone Tradicional" class="product-image">
+                    <h3>Chocotone Clássico</h3>
+                    <p>Nossa receita tradicional com gotas generosas de chocolate ao leite e massa fofinha que derrete na boca. Valor R$ 5,00.</p>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://raw.githubusercontent.com/milychocotones-oss/chocotones-imagens/main/Chocotone%20trufado.jpeg" alt="Chocotone Trufado" class="product-image">
+                    <h3>Chocotone Trufado</h3>
+                    <p>Recheado com brigadeiro feito com chocolate 50% e com cobertura blend, contém 140g. Uma experiência gourmet inesquecível. Valor R$ 8,00.</p>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://raw.githubusercontent.com/milychocotones-oss/chocotones-imagens/main/Panetone%20grande%20tradicional%20com%20moldura%20.jpeg" alt="Chocotone Tamanho Especial Tradicional" class="product-image">
+                    <h3>Chocotone Tamanho Especial Tradicional</h3>
+                    <p>Com 300 gramas, nosso tradicional tamanho especial com gotas generosas de chocolate ao leite. Valor R$ 14,50.</p>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://raw.githubusercontent.com/milychocotones-oss/chocotones-imagens/main/Panetone%20grande%20trufado%20com%20moldura.jpeg" alt="Chocotone Tamanho Especial Trufado" class="product-image">
+                    <h3>Chocotone Tamanho Especial Trufado</h3>
+                    <p>Recheado com brigadeiro feito com chocolate 50% e com cobertura blend, contém 400g. Valor R$ 22,00.</p>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://raw.githubusercontent.com/milychocotones-oss/chocotones-imagens/main/Sacolina%20de%20Natal.jpeg" alt="Sacolinha de Natal" class="product-image">
+                    <h3>Sacolinha de Natal</h3>
+                    <p>Sacolinha especial para embalar seu chocotone pequeno. Perfeita para presentear! Valor R$ 1,50.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="hero">
+            <h2>Nossa História</h2>
+            <p>Somos uma empresa familiar que começou na cozinha de casa, com a paixão por criar o chocotone perfeito. Cada produto é feito com carinho, seguindo receitas tradicionais e usando apenas ingredientes de primeira qualidade. Nosso compromisso é trazer alegria e sabor para sua mesa!</p>
+        </section>
+
+        <section id="contato" class="contact-info">
+            <h2>Entre em Contato</h2>
+            <p>📱 WhatsApp: (71) 99141-6423</p>
+            <p>📧 Email: milychocotones@gmail.com</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Mily Chocotones - Chocotones Artesanais | Feito com 🍫 e amor</p>
+    </footer>
+
+    <script>
+        const dropsContainer = document.getElementById('dropsContainer');
+        const pedidoButton = document.getElementById('pedidoButton');
+        const qrModal = document.getElementById('qrModal');
+        const closeModal = document.getElementById('closeModal');
+        
+        function createDrop() {
+            const drop = document.createElement('div');
+            drop.className = 'drop';
+            drop.style.left = Math.random() * 100 + '%';
+            drop.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            drop.style.opacity = Math.random() * 0.3 + 0.1;
+            drop.style.width = (Math.random() * 15 + 10) + 'px';
+            drop.style.height = (Math.random() * 20 + 15) + 'px';
+            
+            dropsContainer.appendChild(drop);
+            
+            setTimeout(() => {
+                drop.remove();
+            }, 7000);
+        }
+        
+        setInterval(createDrop, 300);
+        
+        for(let i = 0; i < 15; i++) {
+            setTimeout(createDrop, i * 200);
+        }
+        
+        // Abrir modal quando o botão for clicado
+        pedidoButton.addEventListener('click', function() {
+            qrModal.style.display = 'flex';
+        });
+        
+        // Fechar modal quando o botão de fechar for clicado
+        closeModal.addEventListener('click', function() {
+            qrModal.style.display = 'none';
+        });
+        
+        // Fechar modal quando clicar fora do conteúdo
+        window.addEventListener('click', function(event) {
+            if (event.target === qrModal) {
+                qrModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
